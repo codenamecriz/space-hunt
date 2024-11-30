@@ -1,5 +1,6 @@
 import React from "react";
 import "@/assets/styles/globals.css";
+import NavBar from "@/components/NavBar";
 
 export const metadata = {
   title: "SpaceHunt | Find Rental",
@@ -12,7 +13,7 @@ const MainLayout = ({ children }) => {
     // <AuthProvider>
     <html lang="en">
       <body>
-        {/* <Navbar /> */}
+        <NavBar />
         <main>{children}</main>
         {/* <Footer /> */}
       </body>
