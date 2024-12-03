@@ -1,7 +1,14 @@
 import React from "react";
+import Hero from "@/components/Hero";
+import InfoBoxes from "@/components/InfoBoxes";
 
-const page = () => {
-  return <div className="text-2xl">HomePage</div>;
+const HomePage = () => {
+  return (
+    <>
+      <Hero />
+      <InfoBoxes />
+    </>
+  );
 };
 
-export default page;
+export default HomePage;
