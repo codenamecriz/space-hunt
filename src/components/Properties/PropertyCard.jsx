@@ -21,6 +21,8 @@ const PropertyCard = ({ property }) => {
     }
   };
 
+  console.log(property.images[0]);
+
   return (
     // <!-- Listing 1 -->
     <div className="rounded-xl shadow-md relative">
