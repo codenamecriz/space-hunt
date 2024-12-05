@@ -24,6 +24,7 @@ const NavBar = () => {
       const res = await getProviders();
       setProviders(res);
     };
+
     setAuthProviders();
   }, []);
 
@@ -111,8 +112,9 @@ const NavBar = () => {
                     <button
                       key={index}
                       onClick={() => signIn(provider.Id)}
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900/40 hover:text-white rounded-md px-3 py-2"
+                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                     >
+                      {/* <i className="fa-brands fa-google text-white mr-2"></i> */}
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
                     </button>
@@ -166,8 +168,10 @@ const NavBar = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       className="h-8 w-8 rounded-full"
-                      src={profileDefault}
+                      src={profileImage || profileDefault}
                       alt=""
+                      width={40}
+                      height={40}
                     />
                   </button>
                 </div>
@@ -200,7 +204,11 @@ const NavBar = () => {
                     >
                       Saved Properties
                     </Link>
-                    <Link
+                    <button
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut();
+                      }}
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
@@ -208,7 +216,7 @@ const NavBar = () => {
                       id="user-menu-item-2"
                     >
                       Sign Out
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>
