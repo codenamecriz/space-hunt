@@ -3,8 +3,8 @@ import Image from "next/image";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import profileDefault from "@/assets/images/profile.png";
-//import ProfileProperties from "@/components/Profile/ProfileProperties";
-//import { convertToSerializableObject } from "@/utils/convertToOject";
+import ProfileProperties from "@/components/profile/ProfileProperties";
+import { convertToSerializableObject } from "@/utils/convertToSerializableObject";
 
 const ProfilePage = async () => {
   await connectDB();
@@ -15,9 +15,9 @@ const ProfilePage = async () => {
 
   if (!userId) throw new Error("User ID is required.");
 
-  //   const propertiesDocs = await Property.find({ owner: userId }).lean();
+  const propertiesDocs = await Property.find({ owner: userId }).lean();
 
-  //   const properties = propertiesDocs.map(convertToSerializableObject);
+  const properties = propertiesDocs.map(convertToSerializableObject);
 
   return (
     // <!-- Profile Section -->
@@ -48,7 +48,7 @@ const ProfilePage = async () => {
 
             <div className="md:w-3/4 md:pl-4">
               <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
-              {/* <ProfileProperties properties={properties} /> */}
+              <ProfileProperties properties={properties} />
             </div>
           </div>
         </div>
