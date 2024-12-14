@@ -1,6 +1,9 @@
+import BookmarkButton from "@/components/Properties/BookmarkButton";
+import PropertyContactForm from "@/components/Properties/PropertyContactForm";
 import PropertyDetails from "@/components/Properties/PropertyDetails";
 import PropertyHeaderImage from "@/components/Properties/PropertyHeaderImage";
 import PropertyImages from "@/components/Properties/PropertyImages";
+import ShareButton from "@/components/Properties/ShareButton";
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { convertToSerializableObject } from "@/utils/convertToSerializableObject";
@@ -33,6 +36,11 @@ const PropertyPage = async ({ params }) => {
         <div className="container m-auto py-10 px-6">
           <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
             <PropertyDetails property={property} />
+            <aside className="space-y-4">
+              <BookmarkButton property={property} />
+              <ShareButton property={property} />
+              <PropertyContactForm property={property} />
+            </aside>
           </div>
         </div>
       </section>
