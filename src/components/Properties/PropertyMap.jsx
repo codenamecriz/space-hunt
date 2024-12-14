@@ -41,7 +41,6 @@ const PropertyMap = ({ property }) => {
         }
 
         const { lat, lng } = response.results[0].geometry.location;
-
         setLat(lat);
         setLng(lng);
         setViewport({
@@ -49,8 +48,6 @@ const PropertyMap = ({ property }) => {
           latitude: lat,
           longitude: lng,
         });
-
-        console.log(lat, lng);
       } catch (error) {
         console.log(error);
         setGeocodeError(true);
