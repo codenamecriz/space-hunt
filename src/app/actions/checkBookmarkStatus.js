@@ -5,7 +5,7 @@ import { getSessionUser } from "@/utils/getSessionUser";
 import { revalidatePath } from "next/cache";
 import User from "@/models/User";
 
-async function bookmarkProperty(propertyId) {
+async function checkBookmarkStatus(propertyId) {
   await connectDB();
   const sessionUser = await getSessionUser();
   if (!sessionUser || !sessionUser.userId) {
@@ -18,22 +18,7 @@ async function bookmarkProperty(propertyId) {
 
   let isBookmarked = user.bookmarks.includes(propertyId);
 
-  let message;
-  if (isBookmarked) {
-    //If already bookmarked, then remove
-    user.bookmarks.pull(propertyId);
-    message = "Bookmark Removed";
-    isBookmarked = false;
-  } else {
-    user.bookmarks.push(propertyId);
-    message = "Bookmark Added";
-    isBookmarked = true;
-  }
-
-  await user.save();
-
-  revalidatePath("/properties/saved", "page");
-  return { message, isBookmarked };
+  return { isBookmarked };
 }
 
-export default bookmarkProperty;
+export default checkBookmarkStatus;
