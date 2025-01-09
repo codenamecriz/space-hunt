@@ -5,6 +5,7 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import { ToastContainer } from "react-toastify";
+import { GlobalProvider } from "@/context/GlobalContext";
 
 export const metadata = {
   title: "SpaceHunt | Find Rental",
@@ -15,14 +16,16 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <AuthProvider>
-      <html lang="en">
-        <body>
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
-      </html>
+      <GlobalProvider>
+        <html lang="en">
+          <body>
+            <NavBar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </GlobalProvider>
     </AuthProvider>
   );
 };
